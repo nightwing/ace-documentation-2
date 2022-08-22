@@ -1,617 +1,7 @@
 export namespace Ace {
-    export class Tooltip {
-        destroy(): void;
-        getWidth(): Number;
-        getHeight(): Number;
-        hide(): void;
-        show(text: String, x: Number, y: Number): void;
-        setClassName(className: String): void;
-        setPosition(x: Number, y: Number): void;
-        setHtml(html: String): void;
-        setText(text: String): void;
-        getElement(): Element;
-        constructor(parentNode: Element);
-    }
-
-    export class MockRenderer {
-        adjustWrapLimit(): void;
-        screenToTextCoordinates(): { row: number; column: number; };
-        textToScreenCoordinates(): { pageX: number; pageY: number; };
-        unsetStyle(): void;
-        setStyle(): void;
-        setAnnotations(): void;
-        visualizeFocus(): void;
-        showCursor(): void;
-        updateText(): void;
-        updateFull(): void;
-        onResize(): void;
-        updateBreakpoints(): void;
-        updateFrontMarkers(): void;
-        updateBackMarkers(): void;
-        updateLines(startRow: any, endRow: any): void;
-        onChangeTabSize(startRow: any, endRow: any): void;
-        draw(): void;
-        getScrollTopRow(): any;
-        scrollToRow(row: any): void;
-        scrollCursorIntoView(): void;
-        scrollSelectionIntoView(): void;
-        scrollToLine(line: any, center: any): void;
-        scrollToY(scrollLeft: any): void;
-        scrollToX(scrollTop: any): void;
-        animateScrolling(fromValue: any, callback: any): void;
-        updateCursor(): void;
-        on(): void;
-        setTokenizer(): void;
-        getSession(session: any): any;
-        setSession(session: any): void;
-        moveTextAreaToCursor(): void;
-        removeGutterDecoration(): void;
-        addGutterDecoration(): void;
-        getTextAreaContainer(): any;
-        getMouseEventTarget(): any;
-        getContainerElement(): any;
-        getLastFullyVisibleRow(): any;
-        getFirstFullyVisibleRow(): any;
-        getLastVisibleRow(): any;
-        getFirstVisibleRow(): any;
-    }
-
-    export class Event {
-        stopPropagation(): void;
-        preventDefault(): void;
-        initMouseEvent(type: any, _1: any, _2: any, window: any, detail: any, x: any, y: any, _x: any, _y: any, ctrl: any, alt: any, shift: any, meta: any, button: any, relatedTarget: any): void;
-    }
-
-    export class Generator {
-        toArray(breakOnError: any, callback: any): void;
-        end(breakOnError: any, callback: any): void;
-        reverse(): any;
-        join(separator: any): any;
-        sort(compare: any): any;
-        expand(inserter: any, constructor: any): any;
-        zip(generator: any): any;
-        concat(generator: any): any;
-        call(context: any): any;
-        every(condition: any): any;
-        some(condition: any): any;
-        forEach(fn: any): any;
-        each(fn: any): any;
-        reduce(reduce: any, initialValue: any): any;
-        slice(begin: any, end: any): any;
-        filter(filter: any): any;
-        map(mapper: any): any;
-        next(callback: any): void;
-    }
-
-    export class TabstopManager {
-        removeRange(range: any): void;
-        removeTabstopMarkers(ts: any): void;
-        addTabstopMarkers(ts: any): void;
-        addTabstops(tabstops: any, start: any, end: any): void;
-        selectTabstop(index: any): void;
-        tabNext(dir: any): void;
-        onChangeSession(): void;
-        onChangeSelection(): void;
-        onAfterExec(e: any): void;
-        updateLinkedFields(): void;
-        onChange(delta: any): void;
-        detach(): void;
-        attach(editor: any): void;
-    }
-
-    export class TabstopToken {
-    }
-
-    export class SnippetManager {
-        getSnippetByName(name: any, editor: any): any;
-        parseSnippetFile(str: any): {};
-        unregister(snippets: any, scope: any): void;
-        register(snippets: any, scope: any): void;
-        findMatchingSnippet(snippetList: any, before: any, after: any): any;
-        expandSnippetForSelection(editor: any, options: any): boolean;
-        expandWithTab(editor: any, options: any): any;
-        getActiveScopes(editor: any): {};
-        insertSnippet(editor: any, snippetText: any): any;
-        insertSnippetForSelection(editor: any, snippetText: any): void;
-        resolveVariables(snippet: any, editor: any): {};
-        tmFormatFunction(str: any, ch: any, editor: any): any;
-        tmStrFormat(str: any, ch: any, editor: any): any;
-        getVariableValue(editor: any, name: any, indentation: any): any;
-        tokenizeTmSnippet(str: any, startState: any): any;
-        createTokenizer(): any;
-        getTokenizer(): any;
-    }
-
-    export class SearchHighlight {
-        update(html: any, markerLayer: any, session: any, config: any): void;
-        setRegexp(regExp: any): void;
-    }
-
-    export class Search {
-        replace(input: String, replacement: String): String;
-        findAll(session: EditSession): [Range];
-        find(session: EditSession): Range;
-        setOptions(options: any): void;
-        getOptions(): Object;
-        set(options: Object): Search;
-        constructor();
-    }
-
-    export class HScrollBar {
-        setScrollLeft(scrollLeft: any): void;
-        setScrollWidth(width: Number): void;
-        setInnerWidth(width: Number): void;
-        setWidth(width: Number): void;
-        getHeight(): Number;
-        on(name: 'scroll', callback: (e: Object) => void): void;
-        onScroll(): void;
-        constructor(parent: Element, renderer: Object);
-    }
-
-    export class VScrollBar {
-        setScrollTop(scrollTop: Number): void;
-        setInnerHeight(height: Number): void;
-        setScrollHeight(height: Number): void;
-        setHeight(height: Number): void;
-        getWidth(): Number;
-        on(name: 'scroll', callback: (e: Object) => void): void;
-        onScroll(): void;
-        constructor(parent: Element, renderer: Object);
-    }
-
-    export class ScrollBar {
-        setVisible(isVisible: any): void;
-        constructor(parent: Element);
-    }
-
-    export class RenderLoop {
-        clear(change: any): any;
-        schedule(change: any): void;
-    }
-
-    export class RangeList {
-        detach(): void;
-        attach(session: any): void;
-        removeAll(): any;
-        clipRows(startRow: any, endRow: any): {};
-        rangeAtPoint(pos: any): any;
-        containsPoint(pos: any): boolean;
-        contains(row: any, column: any): boolean;
-        merge(): {};
-        substractPoint(pos: any): any;
-        addList(list: any): {};
-        add(range: any): any;
-        pointIndex(pos: any, excludeEdges: any, startIndex: any): any;
-    }
-
-    export class PlaceHolder {
-        cancel(): void;
-        detach(): void;
-        onCursorChange(event: any): void;
-        updateMarkers(): void;
-        updateAnchors(delta: any): void;
-        onUpdate(delta: any): any;
-        hideOtherMarkers(): void;
-        showOtherMarkers(): void;
-        setup(): void;
-        constructor();
-    }
-
-    export class Occur {
-        matchingLines(session: any, options: any): any;
-        occurToOriginalPosition(session: EditSession, pos: Object): Object;
-        originalToOccurPosition(session: EditSession, pos: Object): { row: number; column: any; };
-        displayOriginalContent(editor: any): void;
-        displayOccurContent(editor: any, options: any): void;
-        highlight(sess: any, regexp: any): void;
-        exit(editor: Editor, options: Object): boolean;
-        enter(editor: Editor, options: Object): boolean;
-        constructor();
-    }
-
-    export class MultiSelect {
-    }
-
-    export class MouseHandler {
-        destroy(): void;
-        cancelContextMenu(): void;
-        captureMouse(ev: any, mouseMoveHandler: any): any;
-        setState(state: any): void;
-        onMouseWheel(name: any, e: any): void;
-        onMouseMove(name: any, e: any): void;
-        onMouseEvent(name: any, e: any): void;
-    }
-
-    export class MouseEvent {
-        getShiftKey(): any;
-        getButton(): any;
-        inSelection(): any;
-        getDocumentPosition(): any;
-        stop(): void;
-        preventDefault(): void;
-        stopPropagation(): void;
-    }
-
-    export class FoldHandler {
-    }
-
-    export class DragdropHandler {
-        onMouseDown(e: any): void;
-        onMouseDrag(e: any): void;
-        startDrag(): void;
-        dragReadyEnd(e: any): void;
-        dragWaitEnd(): void;
-        dragWait(): void;
-        onDrop(e: any): any;
-        onDragLeave(e: any): any;
-        onDragOver(e: any): any;
-        onDragEnter(e: any): any;
-        onDragEnd(e: any): void;
-        onDragStart(e: any): any;
-    }
-
-    export class DefaultHandlers {
-        onMouseWheel(ev: any): any;
-        onQuadClick(ev: any): void;
-        onTripleClick(ev: any): void;
-        onDoubleClick(ev: any): void;
-        focusWait(): void;
-        selectAllEnd(): void;
-        selectByLinesEnd(): void;
-        extendSelectionBy(unitName: any): void;
-        select(): void;
-        startSelect(pos: any, waitForClickSelection: any): void;
-        onMouseDown(ev: any): any;
-    }
-
-    export class GutterTooltip {
-        setPosition(x: any, y: any): void;
-    }
-
-    export class GutterHandler {
-    }
-
-    export class MatchingParensOutdent {
-        autoOutdent(doc: any, row: any): number;
-        checkOutdent(line: any, input: any): any;
-    }
-
-    export class MatchingBraceOutdent {
-        autoOutdent(doc: any, row: any): number;
-        checkOutdent(line: any, input: any): any;
-    }
-
-    export class FoldMode {
-        _pop(stack: any, tag: any): any;
-        _readTagBackward(iterator: any): any;
-        _readTagForward(iterator: any): any;
-        _findEndTagInLine(session: any, row: any, tagName: any, startColumn: any): boolean;
-        _getFirstTagInLine(session: any, row: any): any;
-        getCommentFoldWidget(session: any, row: any): "" | "start";
-        vbsBlock(session: any, row: any, column: any, tokenRange: any): any;
-        getBeginEndBlock(session: any, row: any, column: any, matchSequence: string): Range;
-        rubyBlock(session: any, row: any, column: any, tokenRange: any): any;
-        luaBlock(session: any, row: any, column: any, tokenRange: any): any;
-        latexSection(session: any, row: any, column: any): any;
-        latexBlock(session: any, row: any, column: any, returnRange: any): any;
-        isHeading(session: any, row: any): boolean;
-        closingBracketBlock(session: any, bracket: any, row: any, column: any, typeRe: any): any;
-        openingBracketBlock(session: any, bracket: any, row: any, column: any, typeRe: any): any;
-        indentationBlock(session: any, row: any, column: any): any;
-        getCommentRegionBlock(session: any, line: any, row: any): any;
-        getSectionRange(session: any, row: any): any;
-        getRegionBlock(session: any, line: any, row: any): any;
-        getUsingStatementBlock(session: any, line: any, row: any): any;
-        getFoldWidgetRange(session: any, foldStyle: any, row: any): any;
-        getFoldWidget(session: any, foldStyle: any, row: any): any;
-    }
-
-    export class Behaviour {
-        getBehaviours(filter: any): any;
-        inherit(mode: any, filter: any): void;
-        remove(name: any): void;
-        addBehaviours(behaviours: any): void;
-        add(name: any, action: any, callback: any): void;
-    }
-
-    export class LineWidgets {
-        renderWidgets(e: any, renderer: any): void;
-        measureWidgets(e: any, renderer: any): void;
-        onWidgetChanged(w: any): void;
-        getWidgetsAtRow(row: any): {};
-        removeLineWidget(w: any): void;
-        addLineWidget(w: any): any;
-        updateOnChange(delta: any): void;
-        updateOnFold(e: any, session: any): void;
-        detach(e: any): void;
-        attach(editor: any): void;
-        getRowLength(row: any): any;
-    }
-
-    export class Keys {
-    }
-
-    export class EventListener {
-        destroy(): void;
-    }
-
-    export class AppConfig {
-        setDefaultValues(path: any, optionHash: any): void;
-        setDefaultValue(path: any, name: any, value: any): boolean;
-        resetOptions(obj: any): void;
-        defineOptions(obj: any, path: any, options: any): any;
-    }
-
-    export class Text {
-        destroy(): void;
-        renderIndentGuide(parent: any, value: any, max: any): any;
-        update(config: any): void;
-        scrollLines(config: any): any;
-        updateLines(config: any, firstRow: any, lastRow: any): any;
-        onChangeTabSize(): void;
-        setDisplayIndentGuides(display: any): boolean;
-        setShowInvisibles(showInvisibles: any): boolean;
-        setSession(session: any): void;
-        checkForSizeChanges(): void;
-        getCharacterWidth(): any;
-        getLineHeight(): any;
-        setPadding(padding: any): void;
-    }
-
-    export class Marker {
-        drawScreenLineMarker(stringBuilder: any, range: any, clazz: any, config: any, extraStyle: any): void;
-        drawFullLineMarker(stringBuilder: any, range: any, clazz: any, config: any, extraStyle: any): void;
-        drawBidiSingleLineMarker(stringBuilder: any, range: any, clazz: any, config: any, extraLength: any, extraStyle: any): void;
-        drawSingleLineMarker(stringBuilder: any, range: any, clazz: any, config: any, extraLength: any, extraStyle: any): any;
-        drawMultiLineMarker(stringBuilder: any, range: any, clazz: any, config: any, extraStyle: any): void;
-        drawTextMarker(stringBuilder: any, range: any, clazz: any, layerConfig: any, extraStyle: any): void;
-        update(config: any): void;
-        elt(className: any, css: any): void;
-        setMarkers(markers: any): void;
-        setSession(session: any): void;
-        setPadding(padding: any): void;
-    }
-
-    export class Lines {
-        createCell(row: any, config: any, session: any, initElement: any): any;
-        last(): any;
-        unshift(cell: any): void;
-        push(cell: any): void;
-        pop(): void;
-        shift(): void;
-        get(index: any): any;
-        getLength(): any;
-        computeLineHeight(row: any, config: any, session: any): number;
-        computeLineTop(row: any, config: any, session: any): number;
-        pageChanged(oldConfig: any, newConfig: any): boolean;
-        moveContainer(config: any): void;
-    }
-
-    export class Gutter {
-        getRegion(point: any): "markers" | "foldWidgets";
-        getShowFoldWidgets(): any;
-        setShowFoldWidgets(show: any): void;
-        getShowLineNumbers(): any;
-        setShowLineNumbers(show: any): void;
-        setHighlightGutterLine(highlightGutterLine: any): void;
-        scrollLines(config: any): any;
-        updateLineHighlight(): void;
-        update(config: any): void;
-        setAnnotations(annotations: any): void;
-        removeGutterDecoration(row: any, className: any): void;
-        addGutterDecoration(row: any, className: any): void;
-        setSession(session: any): void;
-    }
-
-    export class FontMetrics {
-        transformCoordinates(clientPos: any, elPos: any): {};
-        destroy(): void;
-        getCharacterWidth(ch: any): any;
-        setPolling(val: any): void;
-        checkForSizeChanges(size: any): void;
-    }
-
-    export class Cursor {
-        destroy(): void;
-        update(config: any): void;
-        isCursorInView(pixelPos: any, config: any): boolean;
-        getPixelPosition(position: any, onScreen: any): { left: any; top: number; };
-        restartTimer(): void;
-        showCursor(): void;
-        hideCursor(): void;
-        removeCursor(): any;
-        addCursor(): any;
-        setSmoothBlinking(smoothBlinking: any): void;
-        setBlinkInterval(blinkInterval: any): void;
-        setBlinking(blinking: any): void;
-        setSession(session: any): void;
-        setPadding(padding: any): void;
-    }
-
-    export class MultiHashHandler {
-    }
-
-    export class HashHandler {
-        getStatusText(editor: any, data: any): any;
-        handleKeyboard(data: any, hashId: any, keyString: any, keyCode: any): { command: any; };
-        findKeyCommand(hashId: any, keyString: any): any;
-        parseKeys(keys: any): false | { key: any; hashId: number; };
-        _buildKeyHash(command: any): void;
-        bindKeys(keyList: any): void;
-        removeCommands(commands: any): void;
-        addCommands(commands: any): void;
-        _addCommandToBinding(keyId: any, command: any, position: any): void;
-        bindKey(key: any, command: any, position: any): any;
-        removeCommand(command: any, keepCommand: any): void;
-        addCommand(command: any): void;
-    }
-
-    export class IncrementalSearch {
-        message(msg: any): void;
-        statusMessage(found: any): void;
-        convertNeedleToString(): any;
-        convertNeedleToRegExp(): any;
-        onPaste(text: any): void;
-        onMouseDown(evt: any): boolean;
-        next(options: any): any;
-        removeChar(c: any): any;
-        addString(s: any): any;
-        highlightAndFindWithNeedle(moveToNext: any, needleUpdateFunc: any): any;
-        cancelSearch(reset: any): any;
-        highlight(regexp: any): void;
-        selectionFix(editor: any): void;
-        deactivate(reset: any): void;
-        activate(editor: any, backwards: any): void;
-        constructor();
-    }
-
-    export class ISearchKbd {
-    }
-
-    export class StatusBar {
-        updateStatus(editor: any): void;
-    }
-
-    export class SimpleTextLayer {
-    }
-
-    export class SearchBox {
-        isFocused(): boolean;
-        show(value: any, isReplace: any): void;
-        hide(): void;
-        replaceAll(): void;
-        replaceAndFindNext(): void;
-        replace(): void;
-        findAll(): void;
-        findPrev(): void;
-        findNext(): void;
-        updateCounter(): void;
-        find(skipCurrent: any, backwards: any, preventScroll: any): void;
-        highlight(re: any): void;
-        setSearchRange(range: any): void;
-        setSession(e: any): void;
-        setEditor(editor: any): void;
-    }
-
-    export class OptionPanel {
-        getOption(option: any): any;
-        setOption(option: any, value: any): void;
-        renderOption(key: any, option: any): {};
-        renderOptionControl(key: any, option: any): any;
-        renderOptionGroup(group: any): any;
-        render(): void;
-        add(config: any): void;
-    }
-
-    export class Mode {
-        getKeywords(append: any): any;
-        transformAction(state: any, action: any, editor: any, session: any, param: any): any;
-        allowAutoInsert(): boolean;
-        getLanguageMode(position: any): "R" | "HTML";
-        toggleCommentLines(state: any, doc: any, startRow: any, endRow: any): void;
-        getMatching(session: any, row: any, column: any, tokenRange: any): any;
-        getCompletions(state: any, session: any, pos: any, prefix: any): any;
-        createWorker(session: any): any;
-        autoOutdent(state: any, doc: any, row: any): void;
-        checkOutdent(state: any, line: any, input: any): any;
-        getNextLineIndent(state: any, line: any, tab: any): any;
-        supportsFile(filename: any): any;
-    }
-
-    export class ElasticTabstopsLite {
-        processRows(rows: any): void;
-    }
-
-    export class BracketMatch {
-        getMatchingBracketRanges(pos: Point): null | Range[];
-        getBracketRange(pos: any): any;
-        findMatchingBracket(position: any, chr: any): any;
-    }
-
-    export class OccurKeyboardHandler {
-        uninstallFrom(editor: any): void;
-        installIn(editor: any): void;
-        handleKeyboard(data: any, hashId: any, key: any, keyCode: any): any;
-        attach(editor: any): void;
-    }
-
-    export class IncrementalSearchKeyboardHandler {
-        handleKeyboard(data: any, hashId: any, key: any, keyCode: any): any;
-        detach(editor: any): void;
-        attach(editor: any): void;
-    }
-
-    export class BidiHandler {
-        offsetToCol(posX: Number): Number;
-        getSelections(startCol: Number, endCol: Number): Object[];
-        getPosLeft(col: Number): number;
-        setRtlDirection(editor: any, isRtlDir: any): void;
-        isRtlLine(row: any): any;
-        setContentWidth(width: any): void;
-        setEolChar(eolChar: any): void;
-        setShowInvisibles(showInvisibles: any): void;
-        updateCharacterWidths(fontMetrics: any): void;
-        markAsDirty(): void;
-        updateBidiMap(): void;
-        updateRowLine(docRow: any, splitIndex: any): void;
-        getSplitIndex(): number;
-        getDocumentRow(): number;
-        onChange(delta: any): void;
-        isBidiRow(screenRow: any, docRow: any, splitIndex: any): any;
-        constructor(session: EditSession);
-    }
-
-    export class BackgroundTokenizer {
-        cleanup(): void;
-        getState(row: Number): string;
-        getTokens(row: Number): Token[];
-        stop(): void;
-        scheduleStart(): void;
-        start(startRow: Number): void;
-        on(name: 'update', callback: (e: Object) => void): void;
-        fireUpdateEvent(firstRow: Number, lastRow: Number): void;
-        setDocument(doc: Document): void;
-        setTokenizer(tokenizer: Tokenizer): void;
-        constructor(tokenizer: Tokenizer, editor: Editor);
-    }
-
-    export class FilteredList {
-        filterCompletions(items: any, needle: any): {};
-        setFilter(str: any): void;
-    }
-
-    export class Autocomplete {
-        for(editor: any): any;
-        destroy(): void;
-        onTooltipClick(e: any): void;
-        hideDocTooltip(): void;
-        showDocTooltip(item: any): void;
-        updateDocTooltip(): any;
-        cancelContextMenu(): void;
-        updateCompletions(keepPopupPosition: any, options: any): any;
-        showPopup(editor: any, options: any): void;
-        gatherCompletions(editor: any, callback: any): boolean;
-        insertMatch(data: any, options: any): boolean;
-        goTo(where: any): void;
-        mousewheelListener(e: any): void;
-        mousedownListener(e: any): void;
-        blurListener(e: any): void;
-        changeListener(e: any): void;
-        detach(): void;
-        openPopup(editor: any, prefix: any, keepPopupPosition: any): void;
-        getPopup(): any;
-    }
-
-    export class AcePopup {
-        constructor(parentNode: Element);
-    }
-
     export type NewLineMode = 'auto' | 'unix' | 'windows';
 
     export class Anchor implements EventEmitter {
-        on(name: 'change', callback: (e: Object) => void): void;
-        onChange(delta: Ace.Delta): void;
-        constructor(doc: Document, row: Number, column: Number);
         getPosition(): Position;
         getDocument(): Document;
         setPosition(row: number, column: number, noClip?: boolean): void;
@@ -643,10 +33,8 @@ export namespace Ace {
     }
 
     export class Document implements EventEmitter {
-        on(name: 'change', callback: (e: Object) => void): void;
-        removeLines(firstRow: any, lastRow: any): any;
-        insertLines(row: any, lines: any): any;
-        constructor(textOrLines: String | String[]);
+        revisit(treeParser: any): void;
+        visit(treeParser: any): void;
         setValue(text: string): void;
         getValue(): string;
         createAnchor(row: number, column: number): Anchor;
@@ -706,7 +94,6 @@ export namespace Ace {
     }
 
     export class FoldLine {
-        toString(): any;
         folds: Fold[];
         range: Range;
         start: Point;
@@ -724,7 +111,6 @@ export namespace Ace {
     }
 
     export class Fold {
-        toString(): string;
         range: Range;
         start: Point;
         end: Point;
@@ -739,12 +125,6 @@ export namespace Ace {
     }
 
     interface Folding {
-        tokenizerUpdateFoldWidgets(e: any): void;
-        onFoldWidgetClick(row: any, e: any): void;
-        foldAllComments(): void;
-        foldToLevel(level: any): void;
-        getRowFoldStart(docRow: any, startFoldRow: any): any;
-        getRowFoldEnd(docRow: any, startFoldRow: any): any;
         getFoldAt(row: number, column: number, side: number): Fold;
         getFoldsInRange(range: Range): Fold[];
         getFoldsInRangeList(ranges: Range[]): Fold[];
@@ -791,9 +171,6 @@ export namespace Ace {
     }
 
     export class Range {
-        comparePoints(p1: Ace.Point, p2: Ace.Point): number;
-        fromPoints(start: Point, end: Point): Range;
-        constructor(startRow: Number, startColumn: Number, endRow: Number, endColumn: Number);
         start: Point;
         end: Point;
 
@@ -841,7 +218,6 @@ export namespace Ace {
     }
 
     export interface VirtualRendererOptions {
-        useTextareaForIME: boolean;
         animatedScroll: boolean;
         showInvisibles: boolean;
         showPrintMargin: boolean;
@@ -877,22 +253,6 @@ export namespace Ace {
     export interface EditorOptions extends EditSessionOptions,
         MouseHandlerOptions,
         VirtualRendererOptions {
-        enableBlockSelect: any;
-        enableMultiselect: any;
-        useIncrementalSearch: any;
-        spellcheck: any;
-        rtl: any;
-        rtlText: any;
-        enableLinking: any;
-        enableSnippets: any;
-        enableLiveAutocompletion: any;
-        enableBasicAutocompletion: any;
-        hardWrap: any;
-        enableEmmet: any;
-        useElasticTabstops: any;
-        enableCodeLens: any;
-        relativeLineNumbers: any;
-        showLineNumbers: boolean;
         selectionStyle: string;
         highlightActiveLine: boolean;
         highlightSelectedWord: boolean;
@@ -925,6 +285,16 @@ export namespace Ace {
     }
 
     export interface EventEmitter {
+        eventNames(): any;
+        rawListeners(type: any): any;
+        prependOnceListener(type: any, listener: any): any;
+        prependListener(type: any, listener: any): any;
+        getMaxListeners(): any;
+        listenerCount(emitter: any, type: any): any;
+        listeners(type: any): any;
+        addListener(type: any, listener: any): any;
+        emit(type: any): boolean;
+        setMaxListeners(n: any): any;
         once(name: string, callback: Function): void;
         setDefaultHandler(name: string, callback: Function): void;
         removeDefaultHandler(name: string, callback: Function): void;
@@ -1006,14 +376,12 @@ export namespace Ace {
     }
 
     export class Tokenizer {
-        constructor(rules: Object);
         removeCapturingGroups(src: string): string;
         createSplitterRegexp(src: string, flag?: string): RegExp;
         getLineTokens(line: string, startState: string | string[]): Token[];
     }
 
     class TokenIterator {
-        constructor(session: EditSession, initialRow: Number, initialColumn: Number);
         getCurrentToken(): Token;
         getCurrentTokenColumn(): number;
         getCurrentTokenRow(): number;
@@ -1074,11 +442,6 @@ export namespace Ace {
     }
 
     export class UndoManager {
-        fromJSON(): void;
-        toJSON(): void;
-        getChangedLines(from: any, to: any): void;
-        getChangedRanges(from: any, to: any): void;
-        constructor();
         addSession(session: EditSession): void;
         add(delta: Delta, allowMerge: boolean, session: EditSession): void;
         addSelection(selection: string, rev?: number): void;
@@ -1102,23 +465,6 @@ export namespace Ace {
     }
 
     export class EditSession implements EventEmitter, OptionsProvider {
-        getSelectionMarkers(): any;
-        getDocumentLastRowColumnPosition(docRow: Number, docColumn: Number): any;
-        getRowLength(row: Number): Number;
-        onReloadTokenizer(e: any): void;
-        toString(): String;
-        onChange(delta: any): void;
-        onChangeFold(e: any): void;
-        on(name: 'changeWrapLimit'): void;
-        on(name: 'changeWrapMode'): void;
-        on(name: 'changeMode'): void;
-        on(name: 'changeAnnotation'): void;
-        on(name: 'changeBackMarker'): void;
-        on(name: 'changeFrontMarker'): void;
-        on(name: 'changeBreakpoint'): void;
-        on(name: 'changeOverwrite'): void;
-        on(name: 'changeTabSize'): void;
-        constructor(text: Document | String, mode: Mode);
         selection: Selection;
 
         // TODO: define BackgroundTokenizer
@@ -1287,8 +633,6 @@ export namespace Ace {
     }) => void;
 
     export interface CommandManager extends EventEmitter {
-        setupIncrementalSearch(editor: any, val: any): void;
-        trimMacro(m: any): any;
         byName: CommandMap,
         commands: CommandMap,
         on(name: 'exec', callback: execEventHandler): Function;
@@ -1320,19 +664,6 @@ export namespace Ace {
     }
 
     export class VirtualRenderer implements OptionsProvider, EventEmitter {
-        removeExtraToken(row: any, column: any): void;
-        addToken(text: any, type: any, row: any, column: any): void;
-        screenToTextCoordinates(x: any, y: any): any;
-        removeGutterDecoration(row: any, className: any): void;
-        addGutterDecoration(row: any, className: any): void;
-        setMargin(top: any, bottom: any, left: any, right: any): void;
-        onGutterResize(width: any): void;
-        onResize(force: Boolean, gutterWidth: Number, width: Number, height: Number): number;
-        onChangeTabSize(): void;
-        onChangeNewLineMode(): void;
-        updateCharacterSize(): void;
-        mock(): any;
-        constructor(container: Element, theme: String);
         readonly container: HTMLElement;
         readonly scroller: HTMLElement;
         readonly content: HTMLElement;
@@ -1458,29 +789,6 @@ export namespace Ace {
 
 
     export class Selection implements EventEmitter {
-        isEqual(data: any): any;
-        getRangeOfMovements(func: any): Range;
-        toOrientedRange(range: any): any;
-        detach(): void;
-        moveCursorShortWordLeft(): any;
-        moveCursorShortWordRight(): any;
-        wouldMoveIntoSoftTab(cursor: Object, tabSize: Number, direction: Number): boolean;
-        getLineRange(row: any, excludeLastChar: any): any;
-        moveToPosition(pos: Object): void;
-        moveTo(row: Number, column: Number): void;
-        getSelectionLead(): Object;
-        getSelectionAnchor(): Object;
-        setSelectionAnchor(row: Number, column: Number): void;
-        on(name: 'changeSelection'): void;
-        on(name: 'changeCursor'): void;
-        constructor(session: EditSession);
-        rectangularRangeBlock(screenCursor: Cursor, screenAnchor: Anchor, includeEmptyLines: Boolean): Range;
-        toggleBlockSelection(): void;
-        joinSelections(): void;
-        splitIntoLines(): void;
-        mergeOverlappingRanges(): void;
-        substractPoint(pos: Range): any;
-        toSingleRange(range: any): void;
         moveCursorWordLeft(): void;
         moveCursorWordRight(): void;
         fromOrientedRange(range: Range): void;
@@ -1566,54 +874,6 @@ export namespace Ace {
     }
 
     export class Editor implements OptionsProvider, EventEmitter {
-        expandSnippet(options: any): any;
-        insertSnippet(content: any, options: any): any;
-        alignCursors(): void;
-        selectMore(dir: Number, skip: Boolean, stopAtFirst: any): void;
-        transposeSelections(dir: Number): void;
-        selectMoreLines(dir: Number, skip: Boolean): void;
-        exitMultiSelectMode(): void;
-        forEachSelection(cmd: Object, args: String, options: any): any;
-        removeSelectionMarkers(ranges: any): void;
-        removeSelectionMarker(range: Range): void;
-        addSelectionMarker(orientedRange: Range): Range;
-        updateSelectionMarkers(): void;
-        showSettingsMenu(): void;
-        showKeyboardShortcuts(): void;
-        prompt(message: any, options: any, callback: any): void;
-        revealRange(range: any, animate: any): void;
-        onCompositionEnd(): void;
-        onCompositionUpdate(text: any): void;
-        onCompositionStart(compositionState: any): void;
-        toggleWord(): void;
-        getNumberAt(row: any, column: any): { value: any; start: any; end: any; };
-        removeToLineEnd(): void;
-        removeToLineStart(): void;
-        onCommandKey(e: any, hashId: any, keyCode: any): any;
-        applyComposition(text: any, composition: any): void;
-        onTextInput(text: any, composition: any): any;
-        autoIndent(): void;
-        onCut(): void;
-        onCopy(): void;
-        onChangeFold(): void;
-        onChangeWrapMode(): void;
-        onChangeWrapLimit(): void;
-        onChangeMode(e: any): void;
-        onChangeAnnotation(): void;
-        onChangeBreakpoint(): void;
-        onChangeBackMarker(): void;
-        onChangeFrontMarker(): void;
-        onSelectionChange(e: any): void;
-        onCursorChange(): void;
-        onScrollLeftChange(): void;
-        onScrollTopChange(): void;
-        onTokenizerUpdate(e: any): void;
-        onDocumentChange(delta: any): void;
-        onBlur(e: any): void;
-        onFocus(e: any): void;
-        endOperation(e: any): any;
-        startOperation(commandEvent: any): void;
-        constructor(renderer: VirtualRenderer, session: EditSession);
         once(name: string, callback: Function): void;
         setDefaultHandler(name: string, callback: Function): void;
         removeDefaultHandler(name: string, callback: Function): void;

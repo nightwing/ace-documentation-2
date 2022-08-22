@@ -30,6 +30,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
+      - run: rm -rf doc
+      - run: npm install
+      - run: git clone https://github.com/ajaxorg/ace
+      - run: node generateAnnotations.js ace/lib/ace
+      - run: node generateNewDts.js ace.d.ts 
+      - run: node generateDoc.js doc
+
       - name: Setup Pages
         uses: actions/configure-pages@v1
       - name: Upload artifact
